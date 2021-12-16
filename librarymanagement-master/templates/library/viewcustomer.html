@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style media="screen">
+    table.customerTable {
+border: 2px solid #48b6b9;
+background-color: #f5f2ee;
+width: 100%;
+text-align: center;
+border-collapse: collapse;
+}
+table.customerTable td, table.customerTable th {
+border: 1px solid #ececec;
+padding: 3px 2px;
+}
+table.customerTable tbody td {
+font-size: 13px;
+}
+table.customerTable tr:nth-child(even) {
+background: #f5f2ee;
+}
+table.customerTable thead {
+background: #48b6b9;
+}
+table.customerTable thead th {
+font-size: 19px;
+font-weight: bold;
+color: #FFFFFF;
+text-align: center;
+border-left: 2px solid #48b6b9;
+}
+table.customerTable thead th:first-child {
+border-left: none;
+}
+
+table.customerTable tfoot {
+font-size: 13px;
+font-weight: bold;
+color: #FFFFFF;
+background: #48b6b9;
+}
+table.redTable tfoot td {
+font-size: 13px;
+}
+table.customerTable tfoot .links {
+text-align: right;
+}
+table.customerTable tfoot .links a{
+display: inline-block;
+background: #FFFFFF;
+color: #48b6b9;
+padding: 2px 8px;
+border-radius: 5px;
+}
+    </style>
+    </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br>
+    <br>
+    <h3 class="p-3 mb-2 bg-primary text-white" style = 'font-size: 25px;text-align:center;'>Customer registered in Library</h3>
+
+    {% if customers%}
+<table class="customerTable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Enrollment</th>
+<th>Branch</th>
+<th>Payment</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="4">
+<div class="links"></div>
+</td>
+</tr>
+</tfoot>
+<tbody>
+  {% for s in customers %}
+    <tr>
+      <td>{{s.get_name}}</td>
+      <td>{{s.enrollment}}</td>
+      <td>{{s.branch}}</td>
+      <td>{{s.payment}}</td>
+    </tr>
+
+  {% endfor %}
+</tbody>
+</table>
+{%else%}
+<h1> No Customer Registered in Library</h1>
+{%endif%}
+
+
+
+<br><br><br><br><br><br>
+
+<br><br><br>
+  {% include "library/footer.html" %}
+  </body>
+</html>

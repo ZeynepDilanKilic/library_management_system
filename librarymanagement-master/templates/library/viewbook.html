@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+    table.bookTable {
+      border: 2px solid #1367b6;
+      background-color: #EEE7DB;
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+    }
+    table.bookTable td, table.bookTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+    table.bookTable tbody td {
+      font-size: 13px;
+    }
+    table.bookTable tr:nth-child(even) {
+      background: #abcbcf;
+    }
+    table.bookTable thead {
+      background: #1367b6;
+    }
+    table.bookTable thead th {
+      font-size: 19px;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align: center;
+      border-left: 2px solid #1367b6;
+    }
+    table.bookTable thead th:first-child {
+      border-left: none;
+    }
+    table.bookTable tfoot {
+      font-size: 13px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #1367b6;
+    }
+    table.bookTable tfoot td {
+      font-size: 13px;
+    }
+    table.bookTable tfoot .links {
+      text-align: right;
+    }
+    table.bookTable tfoot .links a{
+      display: inline-block;
+      background: #FFFFFF;
+      color: #1367b6;
+      padding: 2px 8px;
+      border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br>
+    <br>
+    <h4 class="p-3 mb-2 bg-primary text-white" style = 'font-size: 25px; text-align:center; '>Available Book in Library</h4>
+    {% if books%}
+    <table class="bookTable">
+      <thead>
+        <tr>
+          <th>Book Name</th>
+          <th>ISBN</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Items</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="5" rowspan="4">
+            <div class="links"></div>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{book.name}}</td>
+          <td>{{book.isbn}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.category}}</td>
+          <td>{{book.items}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {%else%}
+    <h1>Have 0 book</h1>
+    {%endif%}
+    
+    <br><br><br><br><br><br><br><br><br>
+        {% include "library/footer.html" %}
+  </body>
+</html>
